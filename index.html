@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fiera Suite Relax – Fiumicino · Roma</title>
+    <style>
+      :root {
+        --gold: #d4af37;
+        --dark: #0a1628;
+        --blue: #0f2044;
+        --light: #f5f0e8;
+        --muted: #a0b4d0;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        background: #0a1628;
+        color: #f5f0e8;
+        font-family: Georgia, serif;
+        overflow-x: hidden;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: #07101f;
+        border-bottom: 1px solid #d4af37;
+        padding: 10px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-logo {
+        height: 42px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 16px;
+      }
+      .nav-links a {
+        color: #a0b4d0;
+        text-decoration: none;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-family: Arial, sans-serif;
+      }
+      .nav-links a:hover {
+        color: #d4af37;
+      }
+      .hero {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url("fondo_cabecera.jfif")
+          center/cover;
+        filter: brightness(0.4);
+      }
+      .hero-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(10, 22, 40, 0.2),
+          rgba(10, 22, 40, 0.8)
+        );
+      }
+      .hero-c {
+        position: relative;
+        text-align: center;
+        padding: 20px;
+      }
+      .hero-c img {
+        height: 80px;
+        margin-bottom: 14px;
+      }
+      .hero-c h1 {
+        font-size: clamp(26px, 5vw, 52px);
+        color: #f5f0e8;
+        margin-bottom: 8px;
+      }
+      .hero-c p {
+        color: #d4af37;
+        letter-spacing: 0.2em;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        font-family: Arial, sans-serif;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #d4af37;
+        color: #0a1628;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+        letter-spacing: 0.05em;
+      }
+      .sec {
+        padding: 60px 16px;
+        background: #0a1628;
+      }
+      .sec.alt {
+        background: #0d1e38;
+      }
+      .inner {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .stag {
+        text-align: center;
+        color: #a0b4d0;
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-family: Arial, sans-serif;
+      }
+      .stit {
+        font-size: clamp(22px, 4vw, 36px);
+        color: #f5f0e8;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .gline {
+        width: 60px;
+        height: 2px;
+        background: #d4af37;
+        margin: 0 auto 32px;
+      }
+      .dtxt {
+        font-size: 15px;
+        line-height: 1.9;
+        color: #f5f0e8;
+        max-width: 740px;
+        margin: 0 auto;
+        text-align: justify;
+      }
+      .dtxt strong {
+        color: #d4af37;
+      }
+      .gg {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 8px;
+      }
+      .gi {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        aspect-ratio: 4/3;
+        cursor: pointer;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+      }
+      .gi img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s;
+      }
+      .gi:hover img {
+        transform: scale(1.04);
+      }
+      .fg {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+      }
+      .fc {
+        background: #0f2044;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 10px;
+        padding: 18px 14px;
+        display: flex;
+        gap: 10px;
+      }
+      .fi {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .fc h4 {
+        color: #d4af37;
+        font-size: 13px;
+        margin-bottom: 3px;
+        font-family: Arial, sans-serif;
+      }
+      .fc p {
+        color: #a0b4d0;
+        font-size: 12px;
+        line-height: 1.4;
+        font-family: Arial, sans-serif;
+      }
+      .locs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 24px;
+      }
+      .lc {
+        background: #0f2044;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 10px;
+        padding: 12px 16px;
+        text-align: center;
+        min-width: 130px;
+      }
+      .lc .km {
+        font-size: 24px;
+        font-weight: 700;
+        color: #d4af37;
+      }
+      .lc .nm {
+        font-size: 11px;
+        color: #a0b4d0;
+        margin-top: 2px;
+        font-family: Arial, sans-serif;
+      }
+      .cbox {
+        background: #0f2044;
+        border: 2px solid #d4af37;
+        border-radius: 14px;
+        padding: 32px 24px;
+        text-align: center;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .cbox h3 {
+        font-size: 24px;
+        color: #f5f0e8;
+        margin-bottom: 20px;
+      }
+      .ci {
+        margin-bottom: 12px;
+      }
+      .ci a {
+        color: #f5f0e8;
+        text-decoration: none;
+        font-size: 15px;
+        font-family: Arial, sans-serif;
+      }
+      .ci a:hover {
+        color: #d4af37;
+      }
+      .bbk {
+        display: block;
+        margin-top: 20px;
+        padding: 14px;
+        background: #d4af37;
+        color: #0a1628;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: Arial, sans-serif;
+      }
+
+      .babnb {
+        display: block;
+        margin-top: 8px;
+        padding: 14px;
+        background: #FF385C;
+        color: #0a1628;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: Arial, sans-serif;
+      }
+      .bwa {
+        display: block;
+        margin-top: 8px;
+        padding: 12px;
+        background: #25d366;
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-family: Arial, sans-serif;
+      }
+      footer {
+        background: #050d1a;
+        border-top: 1px solid rgba(212, 175, 55, 0.3);
+        text-align: center;
+        padding: 24px 16px;
+      }
+      footer img {
+        height: 42px;
+        margin-bottom: 8px;
+      }
+      footer p {
+        color: #a0b4d0;
+        font-size: 11px;
+        line-height: 1.8;
+        font-family: Arial, sans-serif;
+      }
+      .lb {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.93);
+        align-items: center;
+        justify-content: center;
+      }
+      .lb.open {
+        display: flex;
+      }
+      .lb img {
+        max-width: 92vw;
+        max-height: 88vh;
+        border-radius: 6px;
+        border: 2px solid #d4af37;
+      }
+      .lb-x {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        color: #d4af37;
+        font-size: 32px;
+        cursor: pointer;
+      }
+      .lb-n {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #d4af37;
+        font-size: 34px;
+        cursor: pointer;
+        background: rgba(10, 22, 40, 0.6);
+        padding: 5px 12px;
+        border-radius: 4px;
+      }
+      .lp {
+        left: 8px;
+      }
+      .ln {
+        right: 8px;
+      }
+      @media (max-width: 580px) {
+        .nav-links {
+          display: none;
+        }
+        .gg {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <img
+        class="nav-logo"
+        src="descarga.jfif"
+        alt="Logo"
+      />
+      <div class="nav-links">
+        <a href="#galleria">Galleria</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#posizione">Posizione</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-ov"></div>
+      <div class="hero-c">
+        <img
+          src="descarga.jfif"
+          alt="Logo"
+        />
+        <p>Fiumicino · Roma</p>
+        <h1>Il tuo appartamento<br />a due passi da Roma</h1>
+        <a href="#contatti" class="btn">Prenota ora</a>
+      </div>
+    </div>
+
+    <div class="sec" id="descrizione" style="padding-top: 80px">
+      <div class="inner">
+        <div class="stag">Benvenuti</div>
+        <h2 class="stit">Fiera Suite Relax</h2>
+        <div class="gline"></div>
+        <p class="dtxt">
+          Situato in un elegante complesso residenziale signorile e silenzioso,
+          <strong>Fiera Suite Relax</strong> è un appartamento raffinato,
+          confortevole e curato nei minimi dettagli, ideale per soggiorni di
+          lavoro, fiere, trasferte o vacanze rilassanti nei dintorni di Roma.<br /><br />
+          La struttura si trova in una posizione strategica, a soli
+          <strong>3,7 km dalla Fiera di Roma</strong> e
+          <strong>4 km dall'Aeroporto di Fiumicino</strong>, offrendo il
+          perfetto equilibrio tra comfort, relax e comodità negli spostamenti.
+        </p>
+      </div>
+    </div>
+
+    <div class="sec alt" id="galleria">
+      <div class="inner">
+        <div class="stag">Le nostre foto</div>
+        <h2 class="stit">Galleria</h2>
+        <div class="gline"></div>
+        <div class="gg" id="gg"></div>
+      </div>
+    </div>
+
+    <div class="sec" id="servizi">
+      <div class="inner">
+        <div class="stag">Cosa offriamo</div>
+        <h2 class="stit">Servizi & Dotazioni</h2>
+        <div class="gline"></div>
+        <div class="fg">
+          <div class="fc">
+            <div class="fi">🛏</div>
+            <div>
+              <h4>Camera da letto</h4>
+              <p>Climatizzata con TV 46" e armadio</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">🛋</div>
+            <div>
+              <h4>Zona Living</h4>
+              <p>TV 55", Netflix e divano letto</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">🍳</div>
+            <div>
+              <h4>Cucina attrezzata</h4>
+              <p>Frigorifero, lavastoviglie, microonde</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">🚿</div>
+            <div>
+              <h4>Bagno moderno</h4>
+              <p>Box doccia con luci LED</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">📶</div>
+            <div>
+              <h4>Wi-Fi gratuito</h4>
+              <p>Alta velocità in tutto l'appartamento</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">🌿</div>
+            <div>
+              <h4>Balcone arredato</h4>
+              <p>Per colazioni e aperitivi all'aperto</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">🚗</div>
+            <div>
+              <h4>Parcheggio gratuito</h4>
+              <p>Ampia disponibilità nella zona</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">🛁</div>
+            <div>
+              <h4>Biancheria inclusa</h4>
+              <p>Lenzuola e asciugamani forniti</p>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fi">👔</div>
+            <div>
+              <h4>Ferro da stiro</h4>
+              <p>Asse e ferro da stiro disponibili</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec alt" id="posizione">
+      <div class="inner">
+        <div class="stag">Dove siamo</div>
+        <h2 class="stit">Posizione Strategica</h2>
+        <div class="gline"></div>
+        <p
+          style="
+            text-align: center;
+            color: #a0b4d0;
+            font-size: 13px;
+            font-family: Arial, sans-serif;
+          "
+        >
+          📍 Via Oslo 7, 00054 Fiumicino (RM)
+        </p>
+        <div class="locs">
+          <div class="lc">
+            <div class="km">3.7 km</div>
+            <div class="nm">✈️ Aeroporto Fiumicino</div>
+          </div>
+          <div class="lc">
+            <div class="km">3.7 km</div>
+            <div class="nm">🏢 Fiera di Roma</div>
+          </div>
+          <div class="lc">
+            <div class="km">16 km</div>
+            <div class="nm">🚇 Metro EUR Magliana</div>
+          </div>
+          <div class="lc">
+            <div class="km">18 km</div>
+            <div class="nm">🏟 Palalottomatica</div>
+          </div>
+          <div class="lc">
+            <div class="km">19 km</div>
+            <div class="nm">⛪ Basilica San Paolo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec" id="contatti">
+      <div class="inner">
+        <div class="stag">Prenotazioni</div>
+        <h2 class="stit">Contattaci</h2>
+        <div class="gline"></div>
+        <div class="cbox">
+          <h3>Fiera Suite Relax</h3>
+          <div class="ci">
+            <a href="tel:+393515064680">📞 +39 351 506 4680</a>
+          </div>
+          <div
+            class="ci"
+            style="
+              color: #a0b4d0;
+              font-size: 13px;
+              font-family: Arial, sans-serif;
+            "
+          >
+            📍 Via Oslo 7, 00054 Fiumicino (RM)
+          </div>
+          <a
+            href="https://www.booking.com/Share-f3IGldg"
+            target="_blank"
+            class="bbk"
+            >🏨 Prenota su Booking</a
+          >
+          <a
+            href="https://www.airbnb.it/rooms/1709336346934130531?guests=1&adults=1&s=13&unique_share_id=3f906d70-2432-4552-99a1-5df13ed70571"
+            target="_blank"
+            class="babnb"
+            >🏨 Prenota su Airbnb</a
+          >
+          <a
+            href="https://wa.me/393515064680?text=Ciao!%20Sono%20interessato%20a%20Fiera%20Suite%20Relax"
+            target="_blank"
+            class="bwa"
+            >💬 Contatta via WhatsApp</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <img
+        src="descarga.jfif"
+        alt="Logo"
+      />
+      <p>
+        Via Oslo 7, 00054 Fiumicino (RM) · Tel. +39 351 506 4680<br />© 2025
+        Fiera Suite Relax · Tutti i diritti riservati
+      </p>
+    </footer>
+
+    <div class="lb" id="lb">
+      <span class="lb-x" onclick="closeLb()">×</span>
+      <span class="lb-n lp" onclick="chg(-1)">&#8249;</span>
+      <img id="lbImg" src="" alt="" />
+      <span class="lb-n ln" onclick="chg(1)">&#8250;</span>
+    </div>
+
+    <script>
+      const photos = [
+        {
+          src: "salone1.jfif",
+          label: "Soggiorno",
+        },
+        {
+          src: "salone-dietro2.jfif",
+          label: "Soggiorno 2",
+        },
+        {
+          src: "salone-tavolo3.jfif",
+          label: "Soggiorno 3",
+        },
+        {
+          src: "balcone1.jfif",
+          label: "Balcone",
+        },
+        {
+          src: "salone-tavolo.jfif",
+          label: "Soggiorno 4",
+        },
+        {
+          src: "comedor.jfif",
+          label: "Zona pranzo",
+        },
+        {
+          src: "salone-dietro.jfif",
+          label: "Zona pranzo 2",
+        },
+        {
+          src: "salone-netflix.jfif",
+          label: "Soggiorno 5",
+        },
+        {
+          src: "cucina2.jfif",
+          label: "Cucina 1",
+        },
+        {
+          src: "cucina1.jfif",
+          label: "Cucina 2",
+        },
+        {
+          src: "stanza4.jfif",
+          label: "Camera da letto 1",
+        },
+        {
+          src: "stanza3.jfif",
+          label: "Zona letto",
+        },
+        {
+          src: "stanza1.jfif",
+          label: "Zona letto 2",
+        },
+        {
+          src: "stanza2.jfif",
+          label: "Camera – bagno",
+        },
+        {
+          src: "box-doccia1.jfif",
+          label: "Box doccia",
+        },
+        {
+          src: "bagno2.jfif",
+          label: "Bagno 1",
+        },
+        {
+          src: "bagno1.jfif",
+          label: "Bagno 2",
+        },
+        {
+          src: "bagno3.jfif",
+          label: "box doccia 2",
+        },
+        {
+          src: "salone-sofaletto.jfif",
+          label: "Sofa letto",
+        },
+        {
+          src: "stanza5.jfif",
+          label: "Sofa letto 2",
+        },
+        {
+          src: "balcone2.jfif",
+          label: "Terraza 1",
+        },
+        {
+          src: "entrata.jfif",
+          label: "Entrata",
+        },
+        {
+          src: "entrata2.jfif",
+          label: "Entrata 2",
+        },
+      ];
+      let cur = 0;
+      const gg = document.getElementById("gg");
+      photos.forEach((p, i) => {
+        const d = document.createElement("div");
+        d.className = "gi";
+        d.onclick = () => openLb(i);
+        d.innerHTML = `<img src="${p.src}" loading="lazy" alt="${p.label}">`;
+        gg.appendChild(d);
+      });
+      function openLb(i) {
+        cur = i;
+        document.getElementById("lbImg").src = photos[i].src;
+        document.getElementById("lb").classList.add("open");
+      }
+      function closeLb() {
+        document.getElementById("lb").classList.remove("open");
+      }
+      function chg(d) {
+        cur = (cur + d + photos.length) % photos.length;
+        document.getElementById("lbImg").src = photos[cur].src;
+      }
+      document.getElementById("lb").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("lb")) closeLb();
+      });
+      document.querySelectorAll('a[href^="#"]').forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          document
+            .querySelector(a.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+        }),
+      );
+    </script>
+  </body>
+</html>
